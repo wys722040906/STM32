@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Download", 
+            "type": "shell",
+            "command": "cd build && ninja Flash && cd ../", // 执行make Flash命令
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [] // 你可以根据需要添加问题匹配器
+/*
+                {
+                    "owner": "cpp",
+                    "fileLocation": ["relative", "${workspaceFolder}"],
+                    "pattern": [
+                        {
+                            "regexp": "^\\s*([\\w-\\.]+):(\\d+):(\\d+):\\s+(.*)$",
+                            "file": 1,
+                            "line": 2,
+                            "column": 3,
+                            "message": 4
+                        }
+                    ]
+                }
+
+*/
+        }
+    ]
+}
