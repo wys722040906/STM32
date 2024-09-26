@@ -1,0 +1,96 @@
+T28AC 000:130.088   SEGGER J-Link V6.60c Log File
+T28AC 000:130.311   DLL Compiled: Dec 23 2019 16:14:31
+T28AC 000:130.322   Logging started @ 2024-07-18 05:01
+T28AC 000:130.337 JLINK_SetWarnOutHandler(...)
+T28AC 000:130.350 - 0.017ms
+T28AC 000:130.365 JLINK_OpenEx(...)
+T28AC 000:150.401   Firmware: J-Link V9 compiled May  7 2021 16:26:12
+T28AC 000:167.067   Hardware: V9.40
+T28AC 000:167.099   S/N: 69406049
+T28AC 000:167.110   OEM: SEGGER
+T28AC 000:167.120   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+T28AC 000:169.124   TELNET listener socket opened on port 19021
+T28AC 000:169.260   WEBSRV Starting webserver
+T28AC 000:169.448   WEBSRV Webserver running on local port 19080
+T28AC 000:169.464 - 39.103ms returns "O.K."
+T28AC 000:169.490 JLINK_GetEmuCaps()
+T28AC 000:169.499 - 0.013ms returns 0xB9FF7BBF
+T28AC 000:169.522 JLINK_TIF_GetAvailable(...)
+T28AC 000:169.953 - 0.444ms
+T28AC 000:169.975 JLINK_SetErrorOutHandler(...)
+T28AC 000:169.983 - 0.012ms
+T28AC 000:170.007 JLINK_ExecCommand("ProjectFile = "C:\Users\wys\Desktop\chuan_kou\MDK-ARM\JLinkSettings.ini"", ...). 
+T28AC 000:171.256   Ref file found at: D:\32\run\ARM\Segger\JLinkDevices.ref
+T28AC 000:171.381   XML referenced by ref file: C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml
+T28AC 000:173.161   C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml evaluated successfully.
+T28AC 000:207.027 - 37.037ms returns 0x00
+T28AC 000:207.056 JLINK_ExecCommand("Device = STM32F103C8", ...). 
+T28AC 000:207.247   Device "STM32F103C8" selected.
+T28AC 000:207.439 - 0.380ms returns 0x00
+T28AC 000:207.447 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T28AC 000:207.455 - 0.004ms returns 0x01
+T28AC 000:207.563 JLINK_GetHardwareVersion()
+T28AC 000:207.573 - 0.012ms returns 0x16F30
+T28AC 000:207.578 JLINK_GetDLLVersion()  returns 66003
+T28AC 000:207.585 JLINK_GetFirmwareString(...)
+T28AC 000:207.593 - 0.009ms
+T28AC 000:207.599 JLINK_GetDLLVersion()  returns 66003
+T28AC 000:207.603 JLINK_GetCompileDateTime()
+T28AC 000:207.606 - 0.004ms
+T28AC 000:207.611 JLINK_GetFirmwareString(...)
+T28AC 000:207.614 - 0.004ms
+T28AC 000:207.619 JLINK_GetHardwareVersion()
+T28AC 000:207.622 - 0.004ms returns 0x16F30
+T28AC 000:207.630 JLINK_TIF_Select(JLINKARM_TIF_JTAG)
+T28AC 000:210.121 - 2.498ms returns 0x00
+T28AC 000:210.140 JLINK_SetSpeed(5000)
+T28AC 000:210.447 - 0.308ms
+T28AC 000:210.707 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T28AC 000:210.713 - 0.008ms returns JLINKARM_RESET_TYPE_NORMAL
+T28AC 000:210.719 JLINK_Reset()
+T28AC 000:213.023   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:213.541   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:266.075   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:266.760   
+  ***** Error: 
+T28AC 000:266.790   STM32: Connecting to CPU via connect under reset failed.
+T28AC 000:381.811   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:382.515   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:435.059   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:435.781   
+  ***** Error: 
+T28AC 000:435.847   STM32: Connecting to CPU via connect under reset failed.
+T28AC 000:486.564 JLINK_GetIdData(pIdData)
+T28AC 000:489.177   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:489.910   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:543.257   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:543.842   
+  ***** Error: 
+T28AC 000:543.874   STM32: Connecting to CPU via connect under reset failed.
+T28AC 000:658.366   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:659.160   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:711.889   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:712.507   
+  ***** Error: 
+T28AC 000:712.535   STM32: Connecting to CPU via connect under reset failed.
+T28AC 000:763.115 - 276.594ms
+T28AC 000:763.207 JLINK_GetIdData(pIdData)
+T28AC 000:765.896   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:766.636   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:819.259   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:820.024   
+  ***** Error: 
+T28AC 000:820.060   STM32: Connecting to CPU via connect under reset failed.
+T28AC 000:934.778   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:935.409   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T28AC 000:988.247   TotalIRLen = ?, IRPrint = 0x..000000000000000000000000
+T28AC 000:988.900   
+  ***** Error: 
+T28AC 000:988.928   STM32: Connecting to CPU via connect under reset failed.
+T28AC 001:039.654 - 276.491ms
+T28AC 001:050.528 JLINK_GetFirmwareString(...)
+T28AC 001:050.558 - 0.036ms
+T28AC 004:795.118 JLINK_Close()
+T28AC 004:805.053 - 9.943ms
+T28AC 004:805.063   
+T28AC 004:805.067   Closed
