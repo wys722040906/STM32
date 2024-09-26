@@ -157,8 +157,8 @@ int main(void)
   MX_DMA_Init();
   MX_USART1_UART_Init();
   /* 需要在初始化时调用一次否则无法接收到内容 */
-  HAL_UARTEx_ReceiveToIdle_DMA(&huart2, rx_buff, BUFF_SIZE);
-  __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE);
+  __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
   while (1)
   {
 
@@ -200,9 +200,9 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef * huart, uint16_t Size)
     {
         if (Size <= BUFF_SIZE)
         {
-            HAL_UARTEx_ReceiveToIdle_DMA(&huart2, rx_buff, BUFF_SIZE); // 接收完毕后重启
-            HAL_UART_Transmit(&huart2, rx_buff, Size, 0xffff);         // 将接收到的数据再发出
-            __HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT过半中断
+            HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收完毕后重启
+            HAL_UART_Transmit(&huart1, rx_buff, Size, 0xffff);         // 将接收到的数据再发出
+            __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT过半中断
             memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
         }
         else  // 接收数据长度大于BUFF_SIZE，错误处理
@@ -217,8 +217,8 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)
 {
     if(huart->Instance == USART2)
     {
-		HAL_UARTEx_ReceiveToIdle_DMA(&huart2, rx_buff, BUFF_SIZE); // 接收发生错误后重启
-		__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断
+		HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收发生错误后重启
+		__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断
 		memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
         
     }
@@ -239,7 +239,7 @@ void Error_Handler(void)
 
 ```
 /* USER CODE BEGIN Private defines */
-extern DMA_HandleTypeDef hdma_usart2_rx;
+extern DMA_HandleTypeDef hdma_usart1_rx;
 /* USER CODE END Private defines */
 
 ```
@@ -466,7 +466,7 @@ int _write(int fd, char *pBuffer, int size)
 - 法二：通用CLion 
 
 ```
-#ifdef __GNUC__
+ifdef __GNUC__
   /* With GCC/RAISONANCE, small printf (option LD Linker-Libraries-Small printf
      set to Yes) calls __io_putchar() */
   #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
@@ -486,6 +486,19 @@ PUTCHAR_PROTOTYPE
  
   return ch;
 }
+#if defined(__GNUC__)
+int _write(int fd, char * ptr, int len)
+{
+  HAL_UART_Transmit(&huart1, (uint8_t *) ptr, len, HAL_MAX_DELAY);
+  return len;
+}
+#endif
+```
+
+- #### cmake/gcc-arm-none-eabi.cmake
+
+```
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs -Wl,--gc-sections -u _printf_float")
 ```
 
 
