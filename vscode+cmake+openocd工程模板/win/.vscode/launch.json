@@ -1,0 +1,32 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/cmake_ninja_project.elf",   
+            "name": "Debug with OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "D:/Program Files/OpenOCD-20240820-0.12.0/share/openocd/scripts/interface/jlink.cfg",  //在OpenOCD选择下载器
+                "D:/Program Files/OpenOCD-20240820-0.12.0/share/openocd/scripts/target/stm32f1x.cfg"    //在OpenOCD选择芯片
+            ],
+            "svdFile": "./STM32F103.svd",   //选择寄存器文件
+        }
+    ]
+}
+
+/*
+“executable”：编译出的二进制文件，也就是最终烧录到单片机中的，这里是elf文件。根据芯片的不同，可能产生不同的名称和后缀
+“request”：可以选launch或attach。launch是指启动调试时同时开始执行程序；attcah是指程序已经在运行了，然后开始调试。
+“type”：调试的类型，选cortex-debug，这是我们装的插件。
+device": “GD32F103RE” 需要按照你实际调试的芯片填写具体型号，由于使用的就是J-LINK GDB Server，所以必须添加详细
+“gdbPath”: “C:/SysGCC/arm-eabi/bin/arm-none-eabi-gdb.exe”,具体你之前安装GNU Arm Embedded Toolchain的地址
+svdFile”：svd文件的路径。这是用来查看芯片寄存器参数的，如果你不需要也可以不配置
+“liveWatch”: 数据实时刷新时间，最小就是1s
+
+*/
