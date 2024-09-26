@@ -1,60 +1,60 @@
-f4_project/freertos.o: ..\Core\Src\freertos.c \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\Core\Inc\FreeRTOSConfig.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
-  ..\Core\Inc\stm32f4xx_hal_conf.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h \
-  ..\Drivers\CMSIS\Include\core_cm4.h \
-  ..\Drivers\CMSIS\Include\cmsis_version.h \
-  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  ..\Drivers\CMSIS\Include\mpu_armv7.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_exti.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
-  ..\MyCode\task\Inc\task_Init.h ..\MyCode\lib\Inc\CANDrive.h \
-  ..\MyCode\lib\Inc\RMLibHead.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Core\Inc\can.h \
-  ..\Core\Inc\main.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\freertos.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  ..\MyCode\task\Inc\PID_task.h ..\MyCode\lib\Inc\motor.h \
-  ..\MyCode\lib\Inc\CANDrive.h ..\MyCode\lib\Inc\PID.h \
-  ..\MyCode\task\Inc\LED_task.h ..\Core\Inc\usart.h \
-  ..\MyCode\task\Inc\ROS_task.h
+f4_project\freertos.o: ../Core/Src/freertos.c
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+f4_project\freertos.o: D:\32\run\ARM\ARMCC\Bin\..\include\stddef.h
+f4_project\freertos.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h
+f4_project\freertos.o: ../Core/Inc/FreeRTOSConfig.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+f4_project\freertos.o: ../Core/Inc/main.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+f4_project\freertos.o: ../Core/Inc/stm32f4xx_hal_conf.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+f4_project\freertos.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+f4_project\freertos.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+f4_project\freertos.o: ../Drivers/CMSIS/Include/core_cm4.h
+f4_project\freertos.o: ../Drivers/CMSIS/Include/cmsis_version.h
+f4_project\freertos.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+f4_project\freertos.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+f4_project\freertos.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+f4_project\freertos.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+f4_project\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+f4_project\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+f4_project\freertos.o: ../MyCode/task/Inc/task_Init.h
+f4_project\freertos.o: ../MyCode/lib/Inc/CANDrive.h
+f4_project\freertos.o: ../MyCode/lib/Inc/RMLibHead.h
+f4_project\freertos.o: D:\32\run\ARM\ARMCC\Bin\..\include\string.h
+f4_project\freertos.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdlib.h
+f4_project\freertos.o: ../Core/Inc/can.h
+f4_project\freertos.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdio.h
+f4_project\freertos.o: ../MyCode/task/Inc/PID_task.h
+f4_project\freertos.o: ../MyCode/lib/Inc/motor.h
+f4_project\freertos.o: ../MyCode/lib/Inc/PID.h
+f4_project\freertos.o: ../MyCode/task/Inc/LED_task.h
+f4_project\freertos.o: ../Core/Inc/usart.h

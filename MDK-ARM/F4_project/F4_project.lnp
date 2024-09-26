@@ -2,7 +2,6 @@
 "f4_project\task_init.o"
 "f4_project\pid_task.o"
 "f4_project\led_task.o"
-"f4_project\ros_task.o"
 "f4_project\candrive.o"
 "f4_project\chassis.o"
 "f4_project\crc.o"
@@ -24,7 +23,6 @@
 "f4_project\freertos.o"
 "f4_project\can.o"
 "f4_project\dma_1.o"
-"f4_project\tim.o"
 "f4_project\usart.o"
 "f4_project\stm32f4xx_it.o"
 "f4_project\stm32f4xx_hal_msp.o"
@@ -58,8 +56,6 @@
 "f4_project\cmsis_os.o"
 "f4_project\heap_4.o"
 "f4_project\port.o"
-"f4_project\duration.o"
-"f4_project\time.o"
 --strict --scatter "F4_project\F4_project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

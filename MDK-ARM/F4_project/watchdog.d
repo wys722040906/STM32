@@ -1,35 +1,37 @@
-f4_project/watchdog.o: ..\MyCode\lib\Src\WatchDog.c \
-  ..\MyCode\lib\Inc\WatchDog.h ..\MyCode\lib\Inc\RMLibHead.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h \
-  ..\Drivers\CMSIS\Include\core_cm4.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\Drivers\CMSIS\Include\cmsis_version.h \
-  ..\Drivers\CMSIS\Include\cmsis_compiler.h \
-  ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  ..\Drivers\CMSIS\Include\mpu_armv7.h \
-  ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
-  ..\Core\Inc\stm32f4xx_hal_conf.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_exti.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
-  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h
+f4_project\watchdog.o: ..\MyCode\lib\Src\WatchDog.c
+f4_project\watchdog.o: ../MyCode/lib/Inc/WatchDog.h
+f4_project\watchdog.o: ../MyCode/lib/Inc/RMLibHead.h
+f4_project\watchdog.o: D:\32\run\ARM\ARMCC\Bin\..\include\string.h
+f4_project\watchdog.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdlib.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Include/core_cm4.h
+f4_project\watchdog.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Include/cmsis_version.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
+f4_project\watchdog.o: ../Core/Inc/stm32f4xx_hal_conf.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
+f4_project\watchdog.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+f4_project\watchdog.o: D:\32\run\ARM\ARMCC\Bin\..\include\stddef.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+f4_project\watchdog.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h

@@ -1,3 +1,4 @@
-f4_project/crc.o: ..\MyCode\lib\Src\CRC.c ..\MyCode\lib\Inc\CRC.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stddef.h
+f4_project\crc.o: ..\MyCode\lib\Src\CRC.c
+f4_project\crc.o: ../MyCode/lib/Inc/CRC.h
+f4_project\crc.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h
+f4_project\crc.o: D:\32\run\ARM\ARMCC\Bin\..\include\stddef.h

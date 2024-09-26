@@ -58,7 +58,6 @@
 /* External variables --------------------------------------------------------*/
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
-extern TIM_HandleTypeDef htim2;
 extern DMA_HandleTypeDef hdma_usart2_rx;
 extern DMA_HandleTypeDef hdma_usart2_tx;
 extern UART_HandleTypeDef huart2;
@@ -66,42 +65,32 @@ extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
   
-//#if 1
-//#pragma import(__use_no_semihosting)             
-////标准库需要的支持函数                 
-//struct __FILE 
-//{ 
-//	int handle; 
+#if 1
+#pragma import(__use_no_semihosting)             
+//标准库需要的支持函数                 
+struct __FILE 
+{ 
+	int handle; 
 
-//}; 
+}; 
 
-//FILE __stdout;       
-////定义_sys_exit()以避免使用半主机模式    
-//void _sys_exit(int x) 
-//{ 
-//	x = x; 
-//} 
-////重定义fputc函数 
-//int fputc(int ch, FILE *f)
-//{
-// 
-//  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xffff);
-// 
-//  return ch;
-// 
-//}
-//#endif 
-//int _write(int fd, char *pBuffer, int size)
-//{
-//    // for (int i = 0; i < size; i++)
-//    // {
-//    //     while ((USART1->SR & 0X40) == 0)
-//    //         ;                     //等待上一次串口数据发送完成
-//    //     USART1->DR = (u8)pBuffer; //写DR,串口1将发送数据
-//    // }
-//    HAL_UART_Transmit(&huart2, (uint8_t *)pBuffer, size, 0xff);
-//    return size;
-// }
+FILE __stdout;       
+//定义_sys_exit()以避免使用半主机模式    
+void _sys_exit(int x) 
+{ 
+	x = x; 
+} 
+//重定义fputc函数 
+int fputc(int ch, FILE *f)
+{
+ 
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xffff);
+ 
+  return ch;
+ 
+}
+#endif 
+
 
 /* USER CODE END EV */
 
@@ -271,20 +260,6 @@ void TIM1_UP_TIM10_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
 
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
-}
-
-/**
-  * @brief This function handles TIM2 global interrupt.
-  */
-void TIM2_IRQHandler(void)
-{
-  /* USER CODE BEGIN TIM2_IRQn 0 */
-
-  /* USER CODE END TIM2_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim2);
-  /* USER CODE BEGIN TIM2_IRQn 1 */
-
-  /* USER CODE END TIM2_IRQn 1 */
 }
 
 /**

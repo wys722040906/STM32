@@ -9,17 +9,12 @@
 
 #include "PID_task.h"
 #include "LED_task.h"
-#include "ROS_task.h"
+
+
 extern xTaskHandle PID_Handler;
 extern xTaskHandle LED_Handler;
 
-#ifdef __cplusplus
-extern "C"{
-#endif
 void taskInit(void);
-#ifdef __cplusplus
-}
-#endif		
 
 
 

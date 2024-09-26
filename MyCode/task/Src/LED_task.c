@@ -10,9 +10,11 @@ uint8_t i = 0;
 uint8_t i_last = 0;
 uint8_t mode = 0; // 0 为 +   ； 1  为 -
 
+
 void LED_Task(void *pvParameters){
 
-	for(;;){
+	for(;;){ 		
+
 		if(i >= 4) mode = 1;
 		if(i <= 0) mode = 0;
 		if(!mode){flag <<= 1;i++;}else{

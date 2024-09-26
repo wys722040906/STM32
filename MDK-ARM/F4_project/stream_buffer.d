@@ -1,15 +1,14 @@
-f4_project/stream_buffer.o: \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  ..\Core\Inc\FreeRTOSConfig.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\stream_buffer.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+f4_project\stream_buffer.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h
+f4_project\stream_buffer.o: D:\32\run\ARM\ARMCC\Bin\..\include\string.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+f4_project\stream_buffer.o: D:\32\run\ARM\ARMCC\Bin\..\include\stddef.h
+f4_project\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+f4_project\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h

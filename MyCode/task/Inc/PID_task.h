@@ -12,6 +12,8 @@ extern xTaskHandle PID_Handler;	//任务句柄
 #define SPEED_MODE 0
 #define POSITION_MODE 1
 #define M3510_MODE 0
+#define VOFA_EN 0
+
 
 typedef struct motor_data_send{
 	int16_t _CAN1[4];  //can口向can总线发送的数据 电机1-4
@@ -67,17 +69,9 @@ typedef struct ramp{		//斜坡结构体,设置各种斜坡参数
 }RAMP;
 						
 
-#ifdef __cplusplus
-extern "C"{
-#endif
 /*------------------函数实现-------------------------*/
 void PID_Task(void *pvParameters);
 int32_t RAMP_self( int32_t final, int32_t now, int32_t ramp );
-#ifdef __cplusplus
-}
-#endif	
-
-
 
 #endif
 	

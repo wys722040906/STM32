@@ -1,2 +1,3 @@
-f4_project/pid.o: ..\MyCode\lib\Src\PID.c ..\MyCode\lib\Inc\PID.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h
+f4_project\pid.o: ..\MyCode\lib\Src\PID.c
+f4_project\pid.o: ../MyCode/lib/Inc/PID.h
+f4_project\pid.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h

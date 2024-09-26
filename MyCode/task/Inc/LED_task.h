@@ -10,13 +10,7 @@
 
 extern xTaskHandle LED_Handler;
 
-//#ifdef __cplusplus
-//extern "C"{
-//#endif
 /*----------------函数声明区---------------------*/
 void LED_Task(void *pvParameters);
-//#ifdef __cplusplus
-//}
-//#endif	
 
 #endif

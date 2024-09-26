@@ -1,18 +1,15 @@
-f4_project/event_groups.o: \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\32\run\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\Core\Inc\FreeRTOSConfig.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+f4_project\event_groups.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdlib.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+f4_project\event_groups.o: D:\32\run\ARM\ARMCC\Bin\..\include\stddef.h
+f4_project\event_groups.o: D:\32\run\ARM\ARMCC\Bin\..\include\stdint.h
+f4_project\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+f4_project\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h

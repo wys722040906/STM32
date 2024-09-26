@@ -72,7 +72,9 @@ void PID_Task(void *pvParameters)
 	
 	
 	MotorSend(&hcan2, 0x200, motor_data_send._CAN2);// ID:201~204	
+#if VOFA_EN
 	printf("%f,%f\n",motor_target.M2006_v4,(float)motor_state.M2006[3].Speed);
+#endif
 	vTaskDelay(1);
 //	vTaskDelayUntil(&xLastWakeTime,2);		
 	}
@@ -204,7 +206,9 @@ void PID_Task(void *pvParameters){ //电机pid控制任务
 		motor_data_send._CAN2[3]=M2006_PID_Speed[3].Output;
 		
 		if(motor_start_flag.M2006) MotorSend(&hcan2, 0x200, motor_data_send._CAN2);
-//		printf("%f,%f,%f\n",motor_target.M2006_v4, motor_target.M2006_v4_ramp, (float)motor_state.M2006[3].Angle);
+		#if VOFA_EN
+		printf("%f,%f,%f\n",motor_target.M2006_v4, motor_target.M2006_v4_ramp, (float)motor_state.M2006[3].Angle);
+		#endif
 		vTaskDelay(2);
 //		vTaskDelayUntil(&xLastWakeTime,2);
   }

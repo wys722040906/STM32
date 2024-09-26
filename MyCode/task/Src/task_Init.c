@@ -15,7 +15,6 @@ void taskInit(void){
 	/*USART2 DMA_init*/
 
 vPortEnterCritical();
-
     xTaskCreate(PID_Task,
          "PID_task",
           300,
@@ -29,7 +28,7 @@ vPortEnterCritical();
           NULL,
           2,
           &LED_Handler); 
-	node_init();
+	
 vPortExitCritical();
 }
 

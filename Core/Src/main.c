@@ -21,7 +21,6 @@
 #include "cmsis_os.h"
 #include "can.h"
 #include "dma.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -30,7 +29,6 @@
 #include "stdio.h"
 #include "string.h"
 #include "dma_interface.h"
-#include "portmacro.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -100,10 +98,9 @@ int main(void)
   MX_CAN1_Init();
   MX_CAN2_Init();
   MX_USART2_UART_Init();
-  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-//	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, rx_buff, BUFF_SIZE);
-//	__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart2, rx_buff, BUFF_SIZE);
+	__HAL_DMA_DISABLE_IT(&hdma_usart2_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
