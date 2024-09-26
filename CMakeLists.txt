@@ -12,7 +12,6 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON)
 
-
 # Define the build type
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug")
@@ -76,10 +75,24 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
 )
 
+# 设置目标为你的 STM32 HAL 工程的目标名称
+# target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE 
+#     -u 
+#     _printf_float
+#     -u 
+#     _scanf_float
+# )
+# target_link_options(${CMAKE_PROJECT_NAME} PRIVATE 
+#     -u 
+#     _printf_float
+#     -u 
+#     _scanf_float
+# )
+
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
+    -u _printf_float  # 链接浮点数支持
     # Add user defined libraries
 )
 

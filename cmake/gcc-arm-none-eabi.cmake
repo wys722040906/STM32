@@ -55,7 +55,7 @@ set(CMAKE_C_LINK_FLAGS "${TARGET_FLAGS}")  # 目标标志
 # 链接脚本文件
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -T \"${CMAKE_SOURCE_DIR}/STM32F103C8Tx_FLASH.ld\"")
 # 使用 nano.specs 来减小库的大小
-set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs -Wl,--gc-sections -u _printf_float")
 # 生成链接映射文件，启用垃圾回收选项
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
 # 启动和结束分组链接，链接 libc 和 libm
