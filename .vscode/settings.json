@@ -4,7 +4,13 @@
         "stdio.h": "c",
         "stm32f1xx_hal.h": "c",
         "stm32f1xx_hal_conf.h": "c",
-        "usart.h": "c"
+        "usart.h": "c",
+        "led_task.h": "c",
+        "task.h": "c",
+        "freertos.h": "c",
+        "cmsis_os.h": "c",
+        "task_init.h": "c",
+        "test_task.h": "c"
     },
     "stm32-for-vscode.makePath": false,
 }
