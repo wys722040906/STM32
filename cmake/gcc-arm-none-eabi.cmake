@@ -35,7 +35,7 @@ set(TARGET_FLAGS "-mcpu=cortex-m3 ")  # 设置目标为 Cortex-M3
 # 将目标标志添加到 C 编译标志中
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${TARGET_FLAGS}")
 # 添加一些默认的 GCC 警告和优化选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic -Wno-unused-parameter -fdata-sections -ffunction-sections")
 
 # 根据构建类型设置不同的优化和调试选项
 if(CMAKE_BUILD_TYPE MATCHES Debug)
@@ -48,14 +48,14 @@ endif()
 # 设置汇编编译标志
 set(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS} -x assembler-with-cpp -MMD -MP")
 # 设置 C++ 编译标志，禁用 RTTI 和异常处理
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -fno-rtti -fno-exceptions -fno-threadsafe-statics")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -fno-rtti -fno-exceptions -fno-threadsafe-statics -Wno-unused-parameter")
 
 # 设置链接时的 C 编译标志
 set(CMAKE_C_LINK_FLAGS "${TARGET_FLAGS}")  # 目标标志
 # 链接脚本文件
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -T \"${CMAKE_SOURCE_DIR}/STM32F103C8Tx_FLASH.ld\"")
 # 使用 nano.specs 来减小库的大小
-set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs")
+set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} --specs=nano.specs -Wl,--gc-sections -u _printf_float")
 # 生成链接映射文件，启用垃圾回收选项
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} -Wl,-Map=${CMAKE_PROJECT_NAME}.map -Wl,--gc-sections")
 # 启动和结束分组链接，链接 libc 和 libm

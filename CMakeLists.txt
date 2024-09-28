@@ -47,6 +47,9 @@ add_custom_target(Flash
     DEPENDS ${CMAKE_BINARY_DIR}/STM32_Template.elf  # 确保这里的目标名称是正确的
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/  # 可选，指定工作目录
 )
+if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")  #避免参数未使用报错
+    add_compile_options(-Wno-unused-parameter)
+endif()
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
@@ -55,15 +58,20 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
 )
 
+# # 搜索文件夹下的所有 .c 文件
+# file(GLOB LIB_SOURCES "${CMAKE_SOURCE_DIR}/MyCode/lib/Src/*.c")
+# file(GLOB TASK_SOURCES "${CMAKE_SOURCE_DIR}/MyCode/task/Src/*.c")
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    # ${LIB_SOURCES}
+    # ${TASK_SOURCES}
     # Add user sources here
-    # ${CMAKE_SOURCE_DIR}/MyCode/lib/Src/file1.c
+    # ${CMAKE_SOURCE_DIR}/MyCode/task/Src/task_Init.c
+    # ${CMAKE_SOURCE_DIR}/MyCode/task/Src/LED_task.c
+    # ${CMAKE_SOURCE_DIR}/MyCode/task/Src/TEST_task.c
     # ${CMAKE_SOURCE_DIR}/MyCode/lib/Src/file2.c
-    # ${CMAKE_SOURCE_DIR}/MyCode/task/Src/task1.c
     # ${CMAKE_SOURCE_DIR}/MyCode/task/Src/task2.c
 )
-
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
@@ -73,13 +81,13 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
+    # __USE_RTOS
     # Add user defined symbols
 )
 
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
     # Add user defined libraries
 )
 
