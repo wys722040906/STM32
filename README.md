@@ -5,7 +5,7 @@
 
 - ##### [u_usart--Vscode+cmake串口通信](https://github.com/wys722040906/STM32/tree/u_usart)
 
-
+- [u_freertos--vscode +cmake实时操作系统](https://github.com/wys722040906/STM32/tree/u_freertos)
 
 ## Windows
 
