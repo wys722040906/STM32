@@ -196,7 +196,7 @@ void SystemClock_Config(void)
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef * huart, uint16_t Size)
 {
-    if(huart->Instance == USART2)
+    if(huart->Instance == USART1)
     {
         if (Size <= BUFF_SIZE)
         {
@@ -207,15 +207,15 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef * huart, uint16_t Size)
         }
         else  // 接收数据长度大于BUFF_SIZE，错误处理
         {
-            fprintf(stderr, "DMA transmit is overflowed");
-//			return -1; //异常退出
+//            fprintf(stderr, "DMA transmit is overflowed");
+//			  return -1; //异常退出
         }
     }
 }
 
 void HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)
 {
-    if(huart->Instance == USART2)
+    if(huart->Instance == USART1)
     {
 		HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收发生错误后重启
 		__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断
