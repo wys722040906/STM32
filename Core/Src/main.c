@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "dma.h"
 #include "usart.h"
 #include "gpio.h"
@@ -54,6 +55,7 @@ uint8_t rx_buff[BUFF_SIZE];
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -98,6 +100,14 @@ int main(void)
   HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE);
   __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
   /* USER CODE END 2 */
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -158,15 +168,15 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef * huart, uint16_t Size)
     {
         if (Size <= BUFF_SIZE)
         {
-            HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收完毕后重启
+            HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收完毕后重�?
             HAL_UART_Transmit(&huart1, rx_buff, Size, 0xffff);         // 将接收到的数据再发出
             __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT过半中断
             memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
         }
-        else  // 接收数据长度大于BUFF_SIZE，错误处理
+        else  // 接收数据长度大于BUFF_SIZE，错误处�?
         {
 //            fprintf(stderr, "DMA transmit is overflowed");
-//			return -1; //异常退出
+//			return -1; //异常�?�?
         }
     }
 }
@@ -175,7 +185,7 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)
 {
     if(huart->Instance == USART1)
     {
-		HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收发生错误后重启
+		HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收发生错误后重�?
 		__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断
 		memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
         
@@ -183,6 +193,27 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)
 }
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
