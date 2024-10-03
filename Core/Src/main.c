@@ -18,30 +18,27 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "cmsis_os.h"
-#include "adc.h"
-#include "can.h"
 #include "dma.h"
-#include "i2c.h"
-#include "tim.h"
 #include "usart.h"
-#include "wwdg.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+#include <stdio.h>
+#define BUFF_SIZE	100
 
+uint8_t rx_buff[BUFF_SIZE];
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define RXBUFFERSIZE 256
-char RxBuffer[RXBUFFERSIZE];
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-uint32_t ADC_ConverteValue = 0;
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,15 +54,12 @@ uint32_t ADC_ConverteValue = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-CAN_RxHeaderTypeDef RxMessage;
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 
 /* USER CODE END 0 */
 
@@ -100,37 +94,17 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
-  MX_USART2_UART_Init();
-  MX_TIM1_Init();
-  MX_TIM2_Init();
-  MX_CAN_Init();
-  MX_I2C1_Init();
-  MX_TIM3_Init();
-  MX_ADC1_Init();
-  MX_ADC2_Init();
-  MX_WWDG_Init();
   /* USER CODE BEGIN 2 */
-  ADC_Enable(&hadc1);
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t*)ADC_ConverteValue, 6);
-//  HAL_ADCEx_Calibration_Start(&hadc1);
-//  HAL_ADCEx_Calibration_Start(&hadc2);
-// 
-//  HAL_ADC_Start(&hadc2);
-//  HAL_ADCEx_MultiModeStart_DMA(&hadc1, &ADC_ConverteValue, 4);
+  HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE);
+  __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断	
   /* USER CODE END 2 */
-
-  /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
-
-  /* Start scheduler */
-  osKernelStart();
-
-  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+//	  printf("ok\r\n");
+	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -146,7 +120,6 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -176,19 +149,38 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
-  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
-  {
-    Error_Handler();
-  }
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef * huart, uint16_t Size)
 {
-	ADC_ConverteValue = HAL_ADC_GetValue(&hadc1);
-} 
+    if(huart->Instance == USART1)
+    {
+        if (Size <= BUFF_SIZE)
+        {
+            HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收完毕后重启
+            HAL_UART_Transmit(&huart1, rx_buff, Size, 0xffff);         // 将接收到的数据再发出
+            __HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT过半中断
+            memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
+        }
+        else  // 接收数据长度大于BUFF_SIZE，错误处理
+        {
+//            fprintf(stderr, "DMA transmit is overflowed");
+//			return -1; //异常退出
+        }
+    }
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef * huart)
+{
+    if(huart->Instance == USART1)
+    {
+		HAL_UARTEx_ReceiveToIdle_DMA(&huart1, rx_buff, BUFF_SIZE); // 接收发生错误后重启
+		__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);		   // 手动关闭DMA_IT_HT中断
+		memset(rx_buff, 0, BUFF_SIZE);							   // 清除接收缓存
+        
+    }
+}
 
 /* USER CODE END 4 */
 
