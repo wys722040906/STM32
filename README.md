@@ -15,6 +15,8 @@
 
 - ##### [w_keil_103_usart--串口调试模板](https://github.com/wys722040906/STM32/tree/w_keil_103_usart)
 
+- **[w_keil_103_freertos--freertos模板](https://github.com/wys722040906/STM32/tree/w_keil_103_freertos)**
+
 ### F407
 
 - ##### [w_keil_407_pid--PID调试模板](https://github.com/wys722040906/STM32/tree/w_keil_407_pid)
@@ -24,5 +26,3 @@
 ## openocd
 
 - ##### [w_openocd_template--Vscode+cmake+openocd模板](https://github.com/wys722040906/STM32/tree/w_openocd_template)
-
-## 
