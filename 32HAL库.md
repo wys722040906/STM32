@@ -4749,6 +4749,141 @@ count = __HAL_TIM_GET_COUNTER(&htim1);
 }
 ```
 
+# VCOM虚拟串口
+
+## 配置
+
+### usb_cdc_if.h 
+
+```
+/* USER CODE BEGIN INCLUDE */
+ #define USB_REC_LEN   256 //定义USB串口接收字节数
+ extern uint8_t USB_RX_BUF[USB_REC_LEN];//接收缓冲
+ extern uint16_t USB_RX_STA;//接收标记
+ /* USER CODE END INCLUDE */`
+```
+
+### usb_cdc_if.c
+
+```
+/* USER CODE BEGIN PV */
+/* Private variables ---------------------------------------------------------*/
+ uint8_t USB_RX_BUF[USB_REC_LEN];//接收缓冲,最大USB_REC_LEN个字节.
+ uint16_t USB_RX_STA=0;//接收状态标记（接收到的有效字节数量）
+/* USER CODE END PV */
+
+-------------------------------------
+static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
+{
+  /* USER CODE BEGIN 6 */
+	if(*Len<USB_REC_LEN)//判断收到数据量是否小于寄存器上限
+	{
+	   uint16_t i;
+	   USB_RX_STA = *Len;//将数据量值放入标志位
+	   for(i=0;i<*Len;i++)//循环
+		   USB_RX_BUF[i] = Buf[i];//将数据内容放入数据寄存器
+	}
+  USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]); //将接收数组buff清空
+  USBD_CDC_ReceivePacket(&hUsbDeviceFS); //再次虚拟串口接收
+  return (USBD_OK);
+  /* USER CODE END 6 */
+}
+-------------------------------------
+uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
+{
+  uint8_t result = USBD_OK;
+  /* USER CODE BEGIN 7 */
+  uint32_t TimeStart = HAL_GetTick();
+  USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
+  if(hcdc == 0) return  USBD_FAIL;  //避免未插入USB设备，出现死机的情况
+  // if (hcdc->TxState != 0){
+  //   return USBD_BUSY;
+  // }
+  while(hcdc->TxState)
+  {
+     if(HAL_GetTick()-TimeStart > 10)
+    	 return USBD_BUSY;
+     else
+    	 break;
+  }
+  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
+  result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+  TimeStart = HAL_GetTick();
+  while(hcdc->TxState)
+	{
+		if(HAL_GetTick()-TimeStart > 10)
+		return USBD_BUSY;
+	}
+  /* USER CODE END 7 */
+  return result;
+}
+----------------------------
+
+/* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
+#include <stdarg.h>
+void USB_printf(const char *format, ...)//USB模拟串口的打印函数
+{
+    va_list args;
+    uint32_t length;
+    va_start(args, format);
+    length = vsnprintf((char  *)UserTxBufferFS, APP_TX_DATA_SIZE, (char  *)format, args);
+    va_end(args);
+    CDC_Transmit_FS(UserTxBufferFS, length);
+}
+
+
+/*USB 重新枚举函数
+ * 解决问题：每次下载完程序后都要重新拔插一次USB PC才能识别串口，这是由于芯片在下载完程序后没有重新枚举所导致的。需要在MCU上电后对USB进行关闭，PC才能重新枚举识别。
+ * 解决方法为将USB DP（PA12）引脚拉低一段时间后即可*/
+void USB_Reset(void)
+{
+  	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	GPIO_InitStruct.Pin = GPIO_PIN_12;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_RESET);
+	HAL_Delay(100);
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_12,GPIO_PIN_SET);
+}
+
+/* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
+
+```
+
+### main.c
+
+```
+/* USER CODE BEGIN Includes */
+#include "stdio.h"
+#include <string.h>
+#include <usbd_cdc_if.h>
+#include "Serial_Analysis.h"
+/* USER CODE END Includes */
+  
+
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+/* USER CODE END WHILE */
+
+/* USER CODE BEGIN 3 */
+//USB模拟串口的查寻接收处理
+if(USB_RX_STA!=0)//判断是否有
+{
+//USB_printf("USB_RX:");//向USB模拟串口发字符串
+CDC_Transmit_FS(USB_RX_BUF,USB_RX_STA);//USB串口：将接收的数据发回给电脑端
+//USB_printf("\r\n");//向USB模拟串口发（回车）
+USB_RX_STA=0;//数据标志位清0
+memset(USB_RX_BUF,0,sizeof(USB_RX_BUF));//USB串口数据寄存器清0
+}
+}
+/* USER CODE END 3 */
+
+```
+
 
 
 # C嵌入式常识
