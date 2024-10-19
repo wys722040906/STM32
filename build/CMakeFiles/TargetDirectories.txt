@@ -1,6 +1,6 @@
-/home/wys/Desktop/Project/STM32_Template/build/CMakeFiles/STM32_Template.dir
-/home/wys/Desktop/Project/STM32_Template/build/CMakeFiles/Flash.dir
-/home/wys/Desktop/Project/STM32_Template/build/CMakeFiles/edit_cache.dir
-/home/wys/Desktop/Project/STM32_Template/build/CMakeFiles/rebuild_cache.dir
-/home/wys/Desktop/Project/STM32_Template/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
-/home/wys/Desktop/Project/STM32_Template/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
+/home/wys/Desktop/STM32/build/CMakeFiles/STM32_Template.dir
+/home/wys/Desktop/STM32/build/CMakeFiles/Flash.dir
+/home/wys/Desktop/STM32/build/CMakeFiles/edit_cache.dir
+/home/wys/Desktop/STM32/build/CMakeFiles/rebuild_cache.dir
+/home/wys/Desktop/STM32/build/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/home/wys/Desktop/STM32/build/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

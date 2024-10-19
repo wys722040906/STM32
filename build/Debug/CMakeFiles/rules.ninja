@@ -35,7 +35,7 @@ rule C_COMPILER__STM32_Template_Debug
 # Rule for linking C executable.
 
 rule C_EXECUTABLE_LINKER__STM32_Template_Debug
-  command = $PRE_LINK && /home/wys/Public/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m3  -T "/home/wys/Desktop/Project/STM32_Template/STM32F103C8Tx_FLASH.ld" --specs=nano.specs -Wl,--gc-sections -u _printf_float -Wl,-Map=STM32_Template.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
+  command = $PRE_LINK && /home/wys/Public/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc $FLAGS -mcpu=cortex-m3  -T "/home/wys/Desktop/STM32/STM32F103C8Tx_FLASH.ld" --specs=nano.specs -Wl,--gc-sections -u _printf_float -Wl,-Map=STM32_Template.map -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group -Wl,--print-memory-usage $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
 
@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake --regenerate-during-build -S/home/wys/Desktop/Project/STM32_Template -B/home/wys/Desktop/Project/STM32_Template/build/Debug
+  command = /usr/bin/cmake --regenerate-during-build -S/home/wys/Desktop/STM32 -B/home/wys/Desktop/STM32/build/Debug
   description = Re-running CMake...
   generator = 1
 

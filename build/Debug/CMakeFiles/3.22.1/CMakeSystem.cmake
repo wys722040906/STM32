@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Linux")
 set(CMAKE_HOST_SYSTEM_VERSION "6.5.0-44-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-include("/home/wys/Desktop/Project/STM32_Template/cmake/gcc-arm-none-eabi.cmake")
+include("/home/wys/Desktop/STM32/cmake/gcc-arm-none-eabi.cmake")
 
 set(CMAKE_SYSTEM "Generic")
 set(CMAKE_SYSTEM_NAME "Generic")
