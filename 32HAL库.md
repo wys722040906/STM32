@@ -1,3 +1,54 @@
+# 独立按键
+
+## 轮询检测
+
+```
+int keyRead(int num){
+	switch(num){
+		case 1:
+			if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == GPIO_PIN_RESET){
+				HAL_Delay(20);
+				while(!HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0));
+				return 1;		
+			}
+			break;		
+		default:
+			break;
+	}
+	return 0;
+}
+while(1){
+	if(keyRead(1)){
+		HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_8);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_RESET);		
+	}s
+}
+```
+
+## 外部中断检测
+
+```
+#define KEY HAL_GPIO_ReadPin(KEY_GPIO_Port,KEY_Pin)
+#define LED0_TOG HAL_GPIO_TogglePin(LED0_GPIO_Port,LED0_Pin)
+#define LED0_SET HAL_GPIO_WritePin(LED0_GPIO_Port,LED0_Pin,GPIO_PIN_SET)
+#define LED0_RESET HAL_GPIO_WritePin(LED0_GPIO_Port,LED0_Pin,GPIO_PIN_RESET)
+
+/* 外部中断处理回调函数 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == GPIO_PIN_0)
+	{
+		HAL_Delay(15);	//按键消抖
+		while(KEY);		//松手检测
+        HAL_Delay(15);	//松手消抖
+		LED0_TOG;		//翻转LED0引脚的电平来控制LED的亮灭
+	}
+}
+```
+
+
+
 # 串口通信
 
 ### 简介
